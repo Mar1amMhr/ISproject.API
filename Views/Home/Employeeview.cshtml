@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebApplication3.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employeeview";
+}
+
+<h1>Employeeview</h1>
+
+<p>
+    <a asp-action="Add">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.Location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salary)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Location)
+                </td>
+            <td>
+                <a asp-action="EmployeeEdit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="EmployeeDelete" asp-route-id="@item.Id">EmployeeDelete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
